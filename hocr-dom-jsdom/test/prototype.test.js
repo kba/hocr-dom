@@ -1,11 +1,7 @@
 const tap = require('tap')
-const fs = require('fs')
 const JsdomHocrParser = require('../src/jsdom-parser')
 const parser = new JsdomHocrParser({debug: false})
-
-function readSample(path) {
-  return fs.readFileSync(`${__dirname}/ocr-fileformat-samples/samples/hocr/${path}`)
-}
+const {readSample} = require('./lib')
 
 tap.test('Document.prototype.queryHocrAll', t => {
   t.plan(8)
