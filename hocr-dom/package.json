@@ -1,6 +1,6 @@
 {
   "name": "hocr-dom",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Extend HTMLDocument and Element with hOCR query and property helpers",
   "main": "src/index.js",
   "scripts": {
