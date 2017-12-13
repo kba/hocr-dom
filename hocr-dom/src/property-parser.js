@@ -5,8 +5,18 @@
 
 const SEPARATOR = ';'
 
-module.exports = class PropertyParser {
+module.exports = class HocrPropertyParser {
 
+    /**
+     * #### `new HocrPropertyParser(opts)`
+     * 
+     * - `@param {Object} opts` All options are `false` by default
+     *   - `@param {Object} opts.debug` Whether to log debug output
+     *   - `@param {Object} opts.allowUnknown` Whether to silently ignore properties not in the spec
+     *   - `@param {Object} opts.allowInvalidNumbers` Whether to silently ignore invalid number (wrong type e.g.)
+     *   - `@param {Object} opts.disableCardinalityChecks` Whether to silently ignore invalid argument cardinality
+     * 
+     */
     constructor(opts={}) {
         Object.assign(this, {
             debug: false,
@@ -99,7 +109,7 @@ module.exports = class PropertyParser {
     }
 
     /**
-     * parse(str)
+     * #### `parse(str)`
      * 
      * Tokenize and Parse the hOCR properties in a title string
      * 
