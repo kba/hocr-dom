@@ -1,8 +1,8 @@
 {
     "scripts": {
-        "test": "make -C hocr-dom-jsdom test"
+        "test": "cd hocr-dom-jsdom ; make test"
     },
-	"devDependencies": {
-		"lerna": "^2.4.0"
-	}
+    "devDependencies": {
+        "lerna": "^2.4.0"
+    }
 }
