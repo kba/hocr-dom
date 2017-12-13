@@ -10,7 +10,21 @@ function log(options, ...args) {
   console.log('# ', new Date(), ...args)
 }
 
+const defaultPropertyParser = new HocrPropertyParser()
+
 class HocrDOM {
+
+  /**
+   * #### Options
+   * 
+   * All boolean options are `false` by default
+   * - `{Boolean} debug` Whether to log debug output
+   * - `{Boolean} allowUnknown` Whether to silently ignore properties not in the spec
+   * - `{Boolean} allowInvalidNumbers` Whether to silently ignore invalid number (wrong type e.g.)
+   * - `{Boolean} disableCardinalityChecks` Whether to silently ignore invalid argument cardinality
+   * - `{PropertyParser} propertyParser` PropertyParser instance to use. Static parser with default values used otherwise
+   * 
+   */
 
   /**
    * #### `HocrDOM.isHocrElement(context, options, cache)`
@@ -40,15 +54,13 @@ class HocrDOM {
    * 
    */
   static getHocrProperties(context, options={}, cache={}) {
-    options = Object.assign({}, {propertyParserOptions: {}}, options)
-    if (!options.propertyParser) {
-      options.propertyParser = new HocrPropertyParser(options.propertyParserOptions)
-    }
+    let {propertyParser} = options
+    if (!propertyParser) propertyParser = defaultPropertyParser
     if (!cache._hocr) {
       if (!HocrDOM.isHocrElement(context, options, cache)) {
         cache._hocr = {}
       } else {
-        cache._hocr = options.propertyParser.parse(context.getAttribute('title'))
+        cache._hocr = propertyParser.parse(context.getAttribute('title'))
       }
     }
     return cache._hocr
