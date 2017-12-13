@@ -1,6 +1,6 @@
 {
   "name": "hocr-dom-jsdom",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Extend jsdom with hOCR query and property helpers",
   "main": "src/jsdom-parser.js",
   "scripts": {
@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/kba/hocr-dom#readme",
   "devDependencies": {
-    "hocr-dom": "^0.0.1",
+    "hocr-dom": "^0.0.2",
     "jsdom": "11.5.1",
     "tap": "11.0.0"
   }
