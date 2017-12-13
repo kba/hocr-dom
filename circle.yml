@@ -1,0 +1,10 @@
+machine:
+  node:
+    version: 8.0.0
+dependencies:
+  override:
+    - npm install
+    - ./node_modules/.bin/lerna bootstrap
+  cache_directories:
+    - "hocr-dom-jsdom/node_modules"
+    - "node_modules"
