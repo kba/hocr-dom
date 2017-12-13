@@ -2,6 +2,8 @@
 
 > Extend DOM to handle hOCR
 
+[![CircleCI](https://circleci.com/gh/kba/hocr-dom.svg?style=svg)](https://circleci.com/gh/kba/hocr-dom)
+
 <!-- BEGIN-MARKDOWN-TOC -->
 * [hocr-dom](#hocr-dom)
 * [hocr-dom-jsdom](#hocr-dom-jsdom)
