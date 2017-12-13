@@ -1,5 +1,11 @@
 const HocrPropertyParser = require('./property-parser')
 
+/**
+ *
+ * ### Element.prototype
+ * 
+ */
+
 module.exports = function extendElement(Element, options={}) {
 
   options = Object.assign({propertyParserOptions: {}, debug: false}, options)
@@ -9,6 +15,12 @@ module.exports = function extendElement(Element, options={}) {
   Object.defineProperty(Element.prototype, '_hocr', {enumerable: false, writable: true})
   Object.defineProperty(Element.prototype, '_isHocrElement', {enumerable: true, writable: true})
 
+  /**
+   * #### hocr
+   * 
+   * List the properties of this hOCR element as an object
+   * 
+   */
   Object.defineProperty(Element.prototype, 'hocr', {
     get() {
       if (!this._hocr) {
@@ -22,6 +34,12 @@ module.exports = function extendElement(Element, options={}) {
     }
   })
 
+  /**
+   * #### isHocrElement
+   * 
+   * `true` if this has an `ocr_*` class, `false` otherwise
+   * 
+   */
   Object.defineProperty(Element.prototype, 'isHocrElement', {
     get() {
       if (this._isHocrElement === undefined) {

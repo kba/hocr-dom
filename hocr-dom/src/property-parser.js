@@ -1,8 +1,6 @@
-/*
- * Copyright (c) 2016-2017 Konstantin Baierer
- *
- * This software may be modified and distributed under the terms
- * of the MIT license.  See the LICENSE file for details.
+/**
+ * ### PropertyParser
+ * 
  */
 
 const SEPARATOR = ';'
@@ -100,6 +98,12 @@ module.exports = class PropertyParser {
         }
     }
 
+    /**
+     * parse(str)
+     * 
+     * Tokenize and Parse the hOCR properties in a title string
+     * 
+     */
     parse(s) {
         let tokens = this.tokenize(s)
         if (this.debug) console.log("tokens", tokens)

@@ -1,8 +1,14 @@
 /**
- * ## HocrDOM
+ * ### HocrDOM
+ * 
  */
 
 module.exports = class HocrDOM {
+
+  /**
+   * #### `HocrDOM.extendPrototypes({Element, Document}, options)`
+   * 
+   */
 
   // Override prototypes
   // XXX

@@ -1,7 +1,8 @@
 /**
- * ## HocrDocument
+ * ### Document.prototype
  *
- * Static methods added to instances of JSDOM
+ * Methods added to Document.prototype
+ * 
  */
 module.exports = function extendDocument(Document, options={}) {
 
@@ -10,22 +11,19 @@ module.exports = function extendDocument(Document, options={}) {
     console.log('# ', new Date(), ...args)
   }
 
-  Document.prototype.queryHocr = function queryHocr(query={}) {
-    return Array.from(this.queryHocrAll(query))[0]
-  }
-
   /**
-   * ### queryHocrAll
-   *
-   * - `@param {String|Object} query Object of query parameters. If a string -> query.class
+   * #### queryHocrAll(query)
+   * 
+   * - `@param {String|Object}` query Object of query parameters. If a string -> query.class
    * - `@param {String} query.tag` tag names to look for. Default '*'
    * - `@param {String} query.title` `title` attribute must contain this string
    * - `@param {String} query.clauses` String of clauses for querySelector
-   * - `@param {String|Array} class Elements with this class (if string) or any of these classes (if array)
+   * - `@param {String|Array}` class Elements with this class (if string) or any of these classes (if array)
    * - `@param {String} query.context` context element to query below. Otherwise root element of DOM.
    * - `@param {String} query.terminal` Return only hocr-elements containing no hocr-elements themselves
    * - `@param {String} query.nonTerminal` Opposite of `terminal`
    * - `@param {String} query.filter` Arbitrary filter to prune resulting element set
+   * 
    */
   Document.prototype.queryHocrAll = function queryHocrAll(query={}) {
 
@@ -74,6 +72,18 @@ module.exports = function extendDocument(Document, options={}) {
     }
 
     return Object.create(set, nodeList.prototype)
+  }
+
+  /**
+   * #### queryHocr(query)
+   * 
+   * Find the first hOCR element matching query
+   * 
+   * See [Document.prototype.queryHocrAll](#documentprototypequeryhocrallquery) for options
+   * 
+   */
+  Document.prototype.queryHocr = function queryHocr(query={}) {
+    return Array.from(this.queryHocrAll(query))[0]
   }
 
 }
