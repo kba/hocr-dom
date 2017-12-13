@@ -21,9 +21,11 @@
     "url": "https://github.com/kba/hocr-dom/issues"
   },
   "homepage": "https://github.com/kba/hocr-dom#readme",
+  "dependencies": {
+    "jsdom": "11.5.1"
+  },
   "devDependencies": {
     "hocr-dom": "^0.1.0",
-    "jsdom": "11.5.1",
     "tap": "11.0.0"
   }
 }
