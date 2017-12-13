@@ -1,0 +1,29 @@
+{
+  "name": "hocr-dom-jsdom",
+  "version": "0.0.1",
+  "description": "Extend jsdom with hOCR query and property helpers",
+  "main": "src/jsdom-parser.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kba/hocr-dom.git"
+  },
+  "keywords": [
+    "hocr",
+    "dom",
+    "ocr"
+  ],
+  "author": "kba",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kba/hocr-dom/issues"
+  },
+  "homepage": "https://github.com/kba/hocr-dom#readme",
+  "devDependencies": {
+    "jsdom": "11.5.1",
+    "hocr-dom": "0.0.1",
+    "tap": "11.0.0"
+  }
+}

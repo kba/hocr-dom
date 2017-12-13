@@ -1,0 +1,24 @@
+{
+  "name": "hocr-dom",
+  "version": "0.0.1",
+  "description": "Extend HTMLDocument and Element with hOCR query and property helpers",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "tap test/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kba/hocr-dom.git"
+  },
+  "keywords": [
+    "hocr",
+    "dom",
+    "ocr"
+  ],
+  "author": "kba",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kba/hocr-dom/issues"
+  },
+  "homepage": "https://github.com/kba/hocr-dom#readme"
+}
