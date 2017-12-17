@@ -116,12 +116,12 @@ module.exports = class HocrPropertyParser {
      */
     parse(s) {
         let tokens = this.tokenize(s)
-        if (this.debug) console.log("tokens", tokens)
+        if (this.debug) console.log(`tokenize('${s})`, tokens)
         let propertyMap = {}
         for (let i = 0; i < tokens.length; i++) {
             let propertyName = tokens[i]
             if (! this.allowUnknown && !(propertyName in this.parsers)) {
-                throw Error(`Unknown property '${propertyName}'`)
+                throw Error(`Unknown property '${propertyName}' in '${s}'`)
             }
             let propertyArgs = []
             let j
@@ -131,7 +131,12 @@ module.exports = class HocrPropertyParser {
             }
             i = j
             if (propertyName in this.parsers) {
+              try {
                 propertyArgs = this.parsers[propertyName](propertyArgs)
+              } catch (err) {
+                console.log(`Parse error in '${s}'`)
+                throw err
+              }
             }
             propertyMap[propertyName] = propertyArgs
         }
