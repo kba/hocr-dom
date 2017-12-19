@@ -21,6 +21,7 @@ module.exports = class HocrPropertyParser {
         Object.assign(this, {
             debug: false,
             allowUnknown: false,
+            allowUnknownEngineSpecific: true,
             allowInvalidNumbers: false,
             disableCardinalityChecks: false,
         }, opts)
@@ -120,8 +121,15 @@ module.exports = class HocrPropertyParser {
         let propertyMap = {}
         for (let i = 0; i < tokens.length; i++) {
             let propertyName = tokens[i]
-            if (! this.allowUnknown && !(propertyName in this.parsers)) {
+            let parser
+            if (propertyName in this.parsers) {
+                parser = this.parsers[propertyName]
+            } else {
+              if (this.allowUnknown || (propertyName.startsWith('x_') && this.allowUnknownEngineSpecific)) {
+                  parser = this.stringParser()
+              } else {
                 throw Error(`Unknown property '${propertyName}' in '${s}'`)
+              }
             }
             let propertyArgs = []
             let j
@@ -130,13 +138,11 @@ module.exports = class HocrPropertyParser {
                 propertyArgs.push(tokens[j])
             }
             i = j
-            if (propertyName in this.parsers) {
-              try {
-                propertyArgs = this.parsers[propertyName](propertyArgs)
-              } catch (err) {
+            try {
+                propertyArgs = parser(propertyArgs)
+            } catch (err) {
                 console.log(`Parse error in '${s}'`)
                 throw err
-              }
             }
             propertyMap[propertyName] = propertyArgs
         }
@@ -177,4 +183,4 @@ module.exports = class HocrPropertyParser {
     }
 }
 
-
+// vim: sw=4

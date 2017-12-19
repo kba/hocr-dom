@@ -25,6 +25,21 @@ tap.test("HocrPropertyParser", (t) => {
     "hardbreak 1": ["hardbreak 1", ['hardbreak', '1'], {hardbreak: true}],
     "image foobarquux.jpg": ["image foobarquux.jpg", ['image', 'foobarquux.jpg'], {image: 'foobarquux.jpg'}],
     "poly min": ["poly 1 1 2 2", ['poly', '1', '1', '2', '2'], {poly: [1, 1, 2, 2]}],
+    "engine specific": [
+      "x_size 39.1; x_descenders 6; x_ascenders 1; x_foo 1 2 3",
+      [
+        'x_size', '39.1', ';',
+        'x_descenders', '6', ';',
+        'x_ascenders', '1', ';',
+        'x_foo', '1', '2', '3',
+      ],
+      {
+        x_size: ['39.1'],
+        x_descenders: ['6'],
+        x_ascenders: ['1'],
+        x_foo: ['1', '2', '3'],
+      }
+    ],
   }
   fixtures['bbox + cflow'] = mergeFixtures(['bbox 1', 'cflow 1', 'baseline 1'])
   Object.keys(fixtures).map(fixtureName => {
