@@ -1,6 +1,6 @@
 {
   "name": "hocr-dom-jsdom",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Extend jsdom with hOCR query and property helpers",
   "main": "src/jsdom-parser.js",
   "scripts": {
