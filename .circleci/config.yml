@@ -1,0 +1,19 @@
+version: 2
+
+jobs:
+
+  build-node8:
+    docker:
+      - image: node:8
+    working_directory: ~/hocr-dom
+    steps:
+      - checkout
+      - run: npm install
+      - run: ./node_modules/.bin/lerna bootstrap
+      - run: npm test
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build-node8
